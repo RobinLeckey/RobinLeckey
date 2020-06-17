@@ -27,6 +27,7 @@ func goatsHandler(w http.ResponseWriter, r *http.Request){
 //Beginning of main
 func main(){
   //Handles all requests to the web root
+  http.FileServer(http.Dir("./demo"))
   http.HandleFunc("/", indexHandler)
   http.HandleFunc("/goat/", goatsHandler)
   //Tells the server to isten on the TCP network address
