@@ -7,6 +7,16 @@ import "net/http"
 import "html/template"
 //prints statements
 import "fmt"
+//Goroutines
+import "time"
+
+
+func adopt(a string){
+  for i := 0; i < 10; i++ {
+    time.Sleep(100 * time.Millisecond)
+    fmt.Println(a)
+  }
+}
 
 type GoatsPage struct{
   Title string
@@ -28,6 +38,8 @@ func goatsHandler(w http.ResponseWriter, r *http.Request){
 
 //Beginning of main
 func main(){
+  go adopt("Please adopt these baby goats")
+  adopt("!!!")
   http.FileServer(http.Dir("./demo"))
   //Handles all requests to the web root
   http.HandleFunc("/", indexHandler)
