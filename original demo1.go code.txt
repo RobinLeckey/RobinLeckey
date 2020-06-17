@@ -101,3 +101,46 @@ func main(){
   log.Fatal(http.ListenAndServe(":8080", nil))
 }
 //End of main
+
+
+<p2>Address: 2508 Fairmount Street.
+Colorado Springs, CO
+80909</p2>
+
+<p3>Contact Kris Schroetlin: ###-####-#####</p3>
+
+<p4>Each goat is $250</p4>
+
+<img src = "C:\Users\rleckey\go\src\hello\pics\boygoat.jpg"
+alt = "Name: N/A
+Gender: Male"
+width = "500"
+height = "400"
+title = "Male Baby Goat">
+
+<img src "C:\Users\rleckey\go\src\hello\pics\deer.jpg"
+alt = "Name: Deer/Cinnamon
+Gender: Female"
+width = "500"
+height = "400"
+title = "Deer or Cinnamon">
+
+<link rel = "stylesheet" href = "C:\Users\rleckey\OneDrive - Compassion International\Documents\demo\cssdemo1.css">
+
+html, body{
+  padding: 0;
+  border: 0;
+  margin: 0;
+  box-sizing: 0;
+}
+
+
+body {
+  height: 100vh;
+  background-color: cornflowerblue;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  font-size: 8rem;
+
+}

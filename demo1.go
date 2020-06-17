@@ -18,7 +18,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request){
 }
 
 func goatsHandler(w http.ResponseWriter, r *http.Request){
-  p := GoatsPage{Title: "Cute Goats in Colorado Springs", Goats: "Here are some goats"}
+  p := GoatsPage{Title: "Baby Goats in Colorado for Adoption", Goats: "Here are the goats that are available:"}
   t, err := template.ParseFiles("index2.gohtml")
 
   fmt.Println(err)
