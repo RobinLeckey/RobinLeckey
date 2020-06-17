@@ -5,6 +5,7 @@ package main
 import "net/http"
 //process HTML templates
 import "html/template"
+//prints statements
 import "fmt"
 
 type GoatsPage struct{
@@ -12,23 +13,25 @@ type GoatsPage struct{
   Goats string
 }
 
-//First handler
+//First handler ~ indexHandler
 func indexHandler(w http.ResponseWriter, r *http.Request){
   fmt.Fprintf(w, "<h1>Goats are cool animals<h2>")
 }
 
+//Second handler ~goatsHandler
 func goatsHandler(w http.ResponseWriter, r *http.Request){
   p := GoatsPage{Title: "Baby Goats in Colorado for Adoption", Goats: "Here are the goats that are available:"}
   t, err := template.ParseFiles("index2.gohtml")
-
   fmt.Println(err)
   t.Execute(w, p)
 }
+
 //Beginning of main
 func main(){
-  //Handles all requests to the web root
   http.FileServer(http.Dir("./demo"))
+  //Handles all requests to the web root
   http.HandleFunc("/", indexHandler)
+  //Displays all information about adopting goats
   http.HandleFunc("/goat/", goatsHandler)
   //Tells the server to isten on the TCP network address
   http.ListenAndServe(":8080", nil)
