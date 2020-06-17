@@ -28,7 +28,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request){
   fmt.Fprintf(w, "<h1>Goats are cool animals<h2>")
 }
 
-//Second handler ~goatsHandler
+//Second handler ~ goatsHandler
 func goatsHandler(w http.ResponseWriter, r *http.Request){
   p := GoatsPage{Title: "Baby Goats in Colorado for Adoption", Goats: "Here are the goats that are available:"}
   t, err := template.ParseFiles("index2.gohtml")
