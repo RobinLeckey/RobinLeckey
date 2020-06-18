@@ -24,11 +24,13 @@ type GoatsPage struct{
 }
 
 //First handler ~ indexHandler
+// localhost:8080/
 func indexHandler(w http.ResponseWriter, r *http.Request){
   fmt.Fprintf(w, "<h1>Goats are cool animals<h2>")
 }
 
 //Second handler ~ goatsHandler
+// localhost:8080/goat/
 func goatsHandler(w http.ResponseWriter, r *http.Request){
   p := GoatsPage{Title: "Baby Goats in Colorado for Adoption", Goats: "Here are the goats that are available:"}
   t, err := template.ParseFiles("index2.gohtml")
@@ -38,8 +40,9 @@ func goatsHandler(w http.ResponseWriter, r *http.Request){
 
 //Beginning of main
 func main(){
-  go adopt("Please adopt these baby goats")
+  go adopt("This is a demo")
   adopt("!!!")
+  fmt.Println("Please adopt a goat or two")
   http.FileServer(http.Dir("./demo"))
   //Handles all requests to the web root
   http.HandleFunc("/", indexHandler)
