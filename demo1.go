@@ -7,10 +7,10 @@ import "net/http"
 import "html/template"
 //prints statements
 import "fmt"
-//Goroutines
+//To demonstrate goroutine
 import "time"
 
-
+//Goroutine
 func adopt(a string){
   for i := 0; i < 10; i++ {
     time.Sleep(100 * time.Millisecond)
@@ -18,9 +18,11 @@ func adopt(a string){
   }
 }
 
+//Datastucture
 type GoatsPage struct{
   Title string
   Goats string
+  Note string
 }
 
 //First handler ~ indexHandler
@@ -32,7 +34,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request){
 //Second handler ~ goatsHandler
 // localhost:8080/goat/
 func goatsHandler(w http.ResponseWriter, r *http.Request){
-  p := GoatsPage{Title: "Baby Goats in Colorado for Adoption", Goats: "Here are the goats that are available:"}
+  p := GoatsPage{Title: "Baby Goats in Colorado for Adoption", Note: "*NOTE*: Peanut and Pepper have to be to be adopted together.", Goats: "Here are the goats that are available:"}
   t, err := template.ParseFiles("index2.gohtml")
   fmt.Println(err)
   t.Execute(w, p)
@@ -40,9 +42,10 @@ func goatsHandler(w http.ResponseWriter, r *http.Request){
 
 //Beginning of main
 func main(){
+  //"go" starts a goroutine
   go adopt("This is a demo")
   adopt("!!!")
-  fmt.Println("Please adopt a goat or two")
+  fmt.Println("Please adopt a goat or two.")
   http.FileServer(http.Dir("./demo"))
   //Handles all requests to the web root
   http.HandleFunc("/", indexHandler)
